@@ -34,11 +34,13 @@ const colors = [
 export default function RandomQuote() {
   const [randomQuote, setQuote] = useState({})
   const [color, setColor] = useState("")
+  const [isLoading, setIsLoading] = useState(true)
 
   const getRandomQuote = async () => {
     const res = await fetch('https://dummyjson.com/quotes/random')
     const data = await res.json()
     setQuote(data)
+    setIsLoading(false)
   }
 
   const getRandomColors = () => {
@@ -72,6 +74,8 @@ export default function RandomQuote() {
   }));
 
   return (
+
+    
     <Box
       sx={{
         height: '100vh',
@@ -82,9 +86,15 @@ export default function RandomQuote() {
         flexDirection: "column"
       }}
     >
+ 
+ {isLoading && <svg 
+ style={{
+  width:200,
+  height:200
+ }}
+ xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><circle fill="#FFFFFF" stroke="#FFFFFF" stroke-width="15" r="15" cx="40" cy="65"><animate attributeName="cy" calcMode="spline" dur="2" values="65;135;65;" keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="-.4"></animate></circle><circle fill="#FFFFFF" stroke="#FFFFFF" stroke-width="15" r="15" cx="100" cy="65"><animate attributeName="cy" calcMode="spline" dur="2" values="65;135;65;" keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="-.2"></animate></circle><circle fill="#FFFFFF" stroke="#FFFFFF" stroke-width="15" r="15" cx="160" cy="65"><animate attributeName="cy" calcMode="spline" dur="2" values="65;135;65;" keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="0"></animate></circle></svg>}
 
-
-      <Card sx={{
+      {!isLoading &&<Card sx={{
         maxWidth: 345,
         backgroundColor: 'white'
       }}>
@@ -143,7 +153,7 @@ export default function RandomQuote() {
             />
           </IconButton>
         </CardActions>
-      </Card>
+      </Card>}
 
       <Typography
         variant="caption"
