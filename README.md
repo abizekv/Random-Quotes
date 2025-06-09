@@ -2,7 +2,7 @@
 
 ![random quote generator preview](./src/assets/random-quote-generator-preview.png)
 
-📝 **Project Description**
+## 📝 Project Description
 
 The Random Quote Generator is a web application that fetches and displays a random quote each time you load the page or click the refresh button. It features dynamic color themes, social sharing options (Twitter, Tumblr), and a clean, responsive UI built with React and Material UI.
 
